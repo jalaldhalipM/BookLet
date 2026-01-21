@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeLe Booklet Brochure</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --primary: #4a6cf7;
+        --secondary: #6c5ce7;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --gradient: linear-gradient(135deg, #4a6cf7 0%, #6c5ce7 100%);
+        --text-gray: #4b5563;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+        color: var(--dark);
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Page Container to simulate booklet pages */
+      .page {
+        max-width: 210mm; /* A4 width */
+        min-height: 297mm; /* A4 height */
+        margin: 20px auto;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Typography Overrides */
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin-bottom: 0.5em;
+        color: var(--dark);
+      }
+
+      p {
+        line-height: 1.6;
+        color: var(--text-gray);
+        margin-bottom: 1em;
+      }
+
+      /* Page 1: Cover */
+      .cover-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+      }
+
+      .cover-title {
+        font-size: 8rem;
+        font-weight: 800;
+        letter-spacing: -2px;
+        margin: 0;
+        text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .cover-subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-top: 20px;
+        letter-spacing: 1px;
+      }
+
+      /* Page 2: Problem Statement */
+      .problem-header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+      }
+
+      .bullet-list li {
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        background: #f8fafc;
+        border-left: 4px solid var(--secondary);
+        border-radius: 4px;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .bullet-list li i {
+        margin-right: 15px;
+        color: var(--secondary);
+      }
+
+      .quote-box {
+        background: var(--dark);
+        color: white;
+        padding: 40px;
+        border-radius: 12px;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 1.4rem;
+        font-style: italic;
+        position: relative;
+      }
+
+      .quote-box::before {
+        content: '"';
+        font-size: 4rem;
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        opacity: 0.2;
+      }
+
+      .closing-gap {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 30px;
+        color: var(--secondary);
+      }
+
+      /* Page 3: Intro */
+      .intro-hero {
+        background: #eef2ff;
+        padding: 40px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+      }
+
+      .core-concept {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .concept-card {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border-top: 4px solid var(--primary);
+      }
+
+      /* Pages 4 & 5: Spread */
+      .spread-title {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--secondary);
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .feature-section {
+        margin-bottom: 50px;
+      }
+
+      .feature-box {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: var(--gradient);
+        opacity: 0.05;
+        border-radius: 0 0 0 100px;
+      }
+
+      .outcome-tag {
+        display: inline-block;
+        background: #ecfdf5;
+        color: #059669;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-top: 15px;
+      }
+
+      .connecting-line {
+        text-align: center;
+        padding: 20px;
+        background: var(--dark);
+        color: white;
+        border-radius: 50px;
+        margin: 30px 0;
+        font-weight: 600;
+      }
+
+      /* Pages 6, 7, 8: Courses */
+      .pathway-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .course-card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 40px;
+        margin-bottom: 30px;
+        border-left: 8px solid var(--primary);
+        transition: transform 0.2s;
+      }
+
+      .course-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      /* Page 10: Readiness */
+      .readiness-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .mock-interview-box {
+        background: linear-gradient(to right, #1e293b, #0f172a);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+      }
+
+      .mock-interview-box h3 {
+        color: white;
+      }
+
+      .mock-interview-box p {
+        color: #cbd5e1;
+      }
+
+      .readiness-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .step-number {
+        background: var(--secondary);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+
+      /* Page 11: Community */
+      .community-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .community-card {
+        background: #f1f5f9;
+        padding: 30px;
+        border-radius: 16px;
+        text-align: center;
+      }
+
+      .community-icon {
+        background: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Footer Element for Pages */
+      .page-footer {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+        font-weight: 600;
+      }
+
+      .brand-corner {
+        position: absolute;
+        bottom: 30px;
+        left: 40px;
+        font-size: 1rem;
+        font-weight: 800;
+        color: var(--primary);
+        opacity: 0.5;
+      }
+
+      .page-break {
+        page-break-after: always;
+        height: 40px; /* Spacing between pages in web view */
+        background: transparent;
+        box-shadow: none;
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+        .page {
+          margin: 0;
+          box-shadow: none;
+          page-break-after: always;
+          min-height: 100vh;
+        }
+        .page-break {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body style="" spellcheck="false">
+    <!-- PAGE 1: COVER -->
+    <div class="page cover-page">
+      <h1 class="cover-title">WeLe</h1>
+      <p class="cover-subtitle">Human-First, AI-Assisted Career Readiness</p>
+      <div class="page-footer" style="color: rgba(255, 255, 255, 0.6)">01</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 2: PROBLEM STATEMENT -->
+    <div class="page">
+      <div class="problem-header">
+        <h5 style="color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px">The Context</h5>
+        <h2>Learning is everywhere.<br>Clarity is not.</h2>
+        <p style="font-size: 1.2rem; color: var(--secondary); font-weight: 600">What’s happening today</p>
+      </div>
+
+      <ul class="bullet-list">
+        <li><i class="fas fa-compass"></i> Too many courses, too little direction</li>
+        <li><i class="fas fa-question-circle"></i> Learning without knowing the outcome</li>
+        <li><i class="fas fa-chart-line"></i> Skills gained, confidence missing</li>
+        <li><i class="fas fa-road"></i> Career decisions made without guidance</li>
+      </ul>
+
+      <div class="quote-box">
+        People are learning more than ever — yet many still feel unprepared for real opportunities.
+      </div>
+
+      <div class="closing-gap">This is the gap WeLe was built to address.</div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">02</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 3: INTRODUCING WELE -->
+    <div class="page">
+      <div class="intro-hero">
+        <h2 style="color: var(--primary)">Introducing WeLe</h2>
+        <p style="font-size: 1.1rem; color: var(--dark)">
+          The future of learning is not about choosing between humans and technology. It is about bringing them together
+          with purpose.
+        </p>
+      </div>
+
+      <p>
+        As careers continue to evolve, learning must offer more than content. It must provide guidance, connection, and
+        adaptability—helping people move forward with confidence.
+      </p>
+
+      <p>WeLe was created with this belief at its core.</p>
+
+      <div class="core-concept">
+        <div class="concept-card">
+          <h3><i class="fas fa-users" style="color: var(--secondary)"></i> Human-First</h3>
+          <p>Learning shaped by real human interaction. Live guidance and collaboration remain central.</p>
+        </div>
+        <div class="concept-card">
+          <h3><i class="fas fa-robot" style="color: var(--secondary)"></i> AI-Assisted</h3>
+          <p>
+            Intelligent personalization works in the background to adapt learning experiences and provide timely
+            assistance.
+          </p>
+        </div>
+      </div>
+
+      <p style="margin-top: 30px">
+        By evolving with each learner, WeLe turns learning into a continuous, meaningful journey—one that prepares
+        people not just to learn, but to grow with clarity and purpose.
+      </p>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">03</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 4 & 5: GUIDED EXPERIENCE -->
+    <div class="page">
+      <div class="spread-title">A Guided &amp; Personalized Learning Experience</div>
+
+      <h2 style="font-size: 2rem; margin-bottom: 30px">Clarity Before Learning Begins</h2>
+      <p style="font-size: 1.1rem; border-left: 4px solid var(--secondary); padding-left: 20px">
+        Meaningful learning begins with clarity — clarity about strengths, preferences, and direction.
+      </p>
+
+      <p>
+        Before learners begin their course journey, WeLe uses intelligent systems to understand how individuals think,
+        what they are naturally inclined toward, and where their potential aligns best.
+      </p>
+
+      <div class="feature-box" style="background: #f8fafc">
+        <h3 style="color: var(--primary)"><i class="fas fa-map-signs"></i> Career Compass</h3>
+        <p>
+          A psychometric assessment that identifies a learner’s natural strengths, interests, and cognitive patterns.
+        </p>
+
+        <h4 style="font-size: 1rem; margin-top: 20px">Key Benefits:</h4>
+        <ul style="font-size: 0.9rem; color: var(--text-gray)">
+          <li>Discover careers aligned with natural strengths</li>
+          <li>Understand why certain paths suit them better than others</li>
+          <li>Receive personalized direction before choosing what to learn</li>
+        </ul>
+
+        <div class="outcome-tag">Outcome: Learners begin with clarity and confidence.</div>
+      </div>
+
+      <div class="connecting-line">Personalized clarity before learning — adaptive guidance while learning</div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">04-05</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 4 & 5 CONTINUED (Logic split for HTML view, conceptually a spread) -->
+    <div class="page">
+      <h2 style="font-size: 2rem; margin-bottom: 30px">Personalized Guidance While Learning</h2>
+      <p>
+        Once learners begin, personalization doesn’t stop — it deepens. WeLe continuously adapts the learning experience
+        based on progress, engagement, and learning pace.
+      </p>
+
+      <div class="feature-box">
+        <h3 style="color: var(--secondary)"><i class="fas fa-chalkboard-teacher"></i> Live Learning Hub</h3>
+        <p>Combines expert-led sessions with structured learning paths adapted to learner needs.</p>
+        <ul style="font-size: 0.9rem">
+          <li>Relevant sessions aligned with learning goals</li>
+          <li>Contextual case discussions based on skill level</li>
+          <li>Structured yet flexible learning flow</li>
+        </ul>
+        <div class="outcome-tag">Outcome: Relevant, engaging, real-world application.</div>
+      </div>
+
+      <div class="feature-box">
+        <h3 style="color: var(--secondary)"><i class="fas fa-brain"></i> AI-Powered Assistance</h3>
+        <p>As learners progress, WeLe provides AI-powered assistance for instant help.</p>
+        <ul style="font-size: 0.9rem">
+          <li>Ask questions related to course content</li>
+          <li>Get instant, personalized explanations</li>
+          <li>Receive guidance based on current learning stage</li>
+        </ul>
+        <div class="outcome-tag">Outcome: Learners stay confident and unblocked.</div>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">04-05</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 6: STUDENTS -->
+    <div class="page">
+      <div class="pathway-header">
+        <h2 style="font-size: 2.2rem">Learning Pathways</h2>
+        <p>Designed for Different Career Stages</p>
+      </div>
+
+      <div class="course-card">
+        <div class="course-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h2 style="color: var(--dark)">Courses Designed for Students</h2>
+        <hr style="margin: 20px 0; border-color: #e2e8f0">
+        <p>Building strong foundations for future success.</p>
+        <p>
+          Our student-focused pathways prioritize fundamental concepts, career exploration, and building the essential
+          soft and hard skills required to enter the workforce with confidence.
+        </p>
+        <div class="outcome-tag" style="background: #eef2ff; color: var(--primary)">
+          Focus: Foundation &amp; Exploration
+        </div>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">06</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 7: FRESHERS -->
+    <div class="page">
+      <div class="pathway-header">
+        <h2 style="font-size: 2.2rem">Learning Pathways</h2>
+        <p>Designed for Different Career Stages</p>
+      </div>
+
+      <div class="course-card" style="border-left-color: var(--secondary)">
+        <div class="course-icon" style="color: var(--secondary)"><i class="fas fa-briefcase"></i></div>
+        <h2 style="color: var(--dark)">Courses Designed for Freshers</h2>
+        <hr style="margin: 20px 0; border-color: #e2e8f0">
+        <p>Bridging the gap between academic knowledge and industry expectations.</p>
+        <p>
+          These courses are tailored for recent graduates looking to land their first significant role. The focus is on
+          practical application, portfolio building, and interview readiness.
+        </p>
+        <div class="outcome-tag" style="background: #f5f3ff; color: var(--secondary)">
+          Focus: Job Readiness &amp; Application
+        </div>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">07</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 8: PROFESSIONALS -->
+    <div class="page">
+      <div class="pathway-header">
+        <h2 style="font-size: 2.2rem">Learning Pathways</h2>
+        <p>Designed for Different Career Stages</p>
+      </div>
+
+      <div class="course-card" style="border-left-color: #0f172a">
+        <div class="course-icon" style="color: #0f172a"><i class="fas fa-user-tie"></i></div>
+        <h2 style="color: var(--dark)">Courses Designed for Working Professionals</h2>
+        <hr style="margin: 20px 0; border-color: #e2e8f0">
+        <p>Upskilling and reskilling for career advancement.</p>
+        <p>
+          Designed for those already in the workforce, these pathways focus on specialized skills, leadership
+          development, and navigating career transitions efficiently.
+        </p>
+        <div class="outcome-tag" style="background: #f1f5f9; color: #0f172a">Focus: Advancement &amp; Specialization</div>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">08</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 10: REAL WORLD READINESS -->
+    <div class="page">
+      <h2 style="font-size: 2.2rem; margin-bottom: 40px; text-align: center">
+        From Learning to<br>Real-World Readiness
+      </h2>
+
+      <div class="mock-interview-box">
+        <h3><i class="fas fa-microphone-alt"></i> AI-Powered Mock Interviews</h3>
+        <p>
+          Learning creates knowledge. Readiness comes from practice. Mock interviews on WeLe help learners experience
+          interview situations before facing them in the real world.
+        </p>
+
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 12px; margin-top: 20px">
+          <div class="step-item" style="margin-bottom: 15px">
+            <i class="fas fa-check" style="color: #4ade80; margin-top: 5px"></i>
+            <span>Practice interviews in a structured environment</span>
+          </div>
+          <div class="step-item" style="margin-bottom: 15px">
+            <i class="fas fa-check" style="color: #4ade80; margin-top: 5px"></i>
+            <span>Receive intelligent feedback on responses</span>
+          </div>
+          <div class="step-item">
+            <i class="fas fa-check" style="color: #4ade80; margin-top: 5px"></i>
+            <span>Identify strengths and areas for improvement</span>
+          </div>
+        </div>
+
+        <p style="margin-top: 20px; font-weight: 600; color: #4ade80">
+          Outcome: Learners move from knowing to being prepared.
+        </p>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">10</div>
+    </div>
+    <div class="page-break"></div>
+
+    <!-- PAGE 11: COMMUNITY -->
+    <div class="page">
+      <div style="text-align: center; margin-bottom: 40px">
+        <h2 style="font-size: 2.2rem; color: var(--primary)">Learning Grows Stronger Together</h2>
+        <p>Learning does not happen in isolation. Growth accelerates when people connect.</p>
+      </div>
+
+      <div class="community-split">
+        <div class="community-card">
+          <div class="community-icon"><i class="fas fa-comments"></i></div>
+          <h3>Learning Community</h3>
+          <p style="font-size: 0.9rem">
+            Collaborate with peers, share perspectives, and discuss real-world challenges. Builds a sense of belonging.
+          </p>
+        </div>
+
+        <div class="community-card">
+          <div class="community-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Mentor Connect</h3>
+          <p style="font-size: 0.9rem">
+            Access industry mentors for insights beyond theory. Understand expectations and make informed decisions.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 50px; padding: 30px; background: #eef2ff; border-radius: 12px">
+        <h4 style="color: var(--secondary); margin-bottom: 0">Outcome</h4>
+        <p style="font-size: 1.2rem; font-weight: 600; margin: 10px 0 0 0">
+          Learners grow with support, perspective, and real-world insight — not alone.
+        </p>
+      </div>
+
+      <div class="brand-corner">WeLe</div>
+      <div class="page-footer">11</div>
+    </div>
+  
+
+</body></html>
